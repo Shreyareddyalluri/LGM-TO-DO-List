@@ -1,0 +1,83 @@
+<html>
+<head>
+<style>
+input {
+   width: 75%;
+   font-size: 16px;
+}
+.addBtn {
+   padding: 10px;
+  width: 25%;
+    color:black;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+  
+}
+
+.addBtn:hover {
+  background-color:crimson;
+}
+.header {
+  background-color:darkgoldenrod;
+  text-align: center;
+}
+ul li {
+  cursor: pointer;
+  padding: 12px 8px 12px 40px;
+  position: relative;
+  background: pink;
+  font-size: 18px;
+}
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+</style>
+</head>
+<body>
+<div id="myDIV" class="header">
+  <h2 style="margin:5px">My To Do List</h2>
+  <input type="text" id="myInput" placeholder="Things you need to do!!">
+  <span onclick="newElement()" class="addBtn">Add</span>
+</div>
+<ul id="myUL">
+ </ul>
+
+<script>
+function newElement() {
+  var el = document.createElement("li");
+
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  el.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(el);
+  }
+  document.getElementById("myInput").value = "";
+
+  var sp = document.createElement("span");
+  var txt = document.createTextNode("X");
+  sp.className = "close";
+  sp.appendChild(txt);
+  el.appendChild(sp);
+var close = document.getElementsByClassName("close");
+var i;
+
+  for (i = 0; i < close.length; i++) 
+
+{
+    close[i].onclick = function() {
+      this.parentElement.style.display = "none";
+      
+    }
+}
+  }
+</script>
+</body>
+</html>
